@@ -1,0 +1,38 @@
+﻿body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+    .nav-link:hover {
+        color: #ffe0b3 !important;
+    }
+
+.container h1, .container h2 {
+    color: #333;
+}
+
+.btn-success {
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+    .btn-success:hover {
+        background-color: #28a745;
+    }
+
+.btn-primary, .btn-secondary {
+    font-size: 1.2rem;
+}

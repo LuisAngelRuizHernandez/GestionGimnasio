@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reporte</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $("#btnIncrustar").on("click", function () {
+                $("#reportSimple").attr("src", "VerReporteIngreso").load();
+            });
+
+            $("#btnDescargarIngreso").on("click", function () { // llamado al btn descargar ingreso
+                window.open("VerReporteIngreso");
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#btnIncrustar2").on("click", function () {
+                $("#reportSimple").attr("src", "VerReporteMaquina").load();
+            });
+
+            $("#btnDescargarMaquina").on("click", function () {// llamado al btn descargar maquina
+                window.open("VerReporteMaquina");
+            });
+        });
+
+    </script>
+
+
+    <input type="button" id="btnIncrustar" value="Ver reporte Ingreso" class="btn btn-success" />
+
+    <input type="button" id="btnIncrustar2" value="Ver reporte Maquina" class="btn btn-success" />
+
+    <input type="button" id="btnDescargarIngreso" value="Descargar reporte Ingreso" class="btn btn-warning" />
+
+    <input type="button" id="btnDescargarMaquina" value="Descargar reporte Maquina" class="btn btn-warning" />
+
+    <iframe id="reportSimple" style="width:100%; height:600px;" frameborder="0" scrolling="yes">
+    </iframe>
+    <div>
+    </div>
+</body>
+</html>
+

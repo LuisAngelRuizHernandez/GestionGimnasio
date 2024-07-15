@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de aprendiz</title>
+    <link rel="shortcut icon" href="~/Content/Imágenes/favicon.png" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            width: 100%;
+            background-color: #ff7f27;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            color: white;
+        }
+
+        .center-box {
+            border: 2px solid black;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            .center-box input {
+                margin-top: 10px;
+                padding: 5px;
+                border: 1px solid #ff7f27;
+            }
+
+            .center-box button {
+                margin-top: 10px;
+                padding: 10px 20px;
+                background-color: #ff7f27;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+
+<body>
+    <header>Ingreso de aprendiz</header>
+    <div class="center-box">
+        <form id="ingresoForm" class="form" action="@Url.Action("Index", "Ingreso")" method="post">
+            <label for="cc-aprendiz">Número de identidad</label>
+            <input type="number" id="idAprendiz" name="cc-aprendiz">
+            <div class="form-group text-center">
+                <button type="submit" name="submit" class="btn btn-info btn-md">Ingresar</button>
+            </div>
+            @if (ViewData["Mensaje1"] != null)
+             {
+                <div name="alerta" class="alert alert-primary" role="alert">
+                    @ViewData["Mensaje1"]
+                </div>
+             }
+        </form>
+    </div>
+</body>

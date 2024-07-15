@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProyectoGimnasio.Rutina>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+                                  
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Bomnito.css" rel="stylesheet" />
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Content/Imágenes/favicon.png" />
+
+    <title>Rutina</title>
+</head>
+<body>
+    <p>
+        <a class="create-new" href="@Url.Action("Create")">Agregar rutina</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Nombre de rutina
+            </th>
+            <th>
+                Aprendiz vinculado
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreRutina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aprendiz.nombreAprendiz)
+                </td>
+                <td class="action-links">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idRutina }, new { @class = "edit" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.idRutina }, new { @class = "details" }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.idRutina }, new { @class = "delete" }) |
+                    @Html.ActionLink("Ejercicios", "Index", "DetallesRutinas", new { id = item.idRutina }, new { @class = "delete" })
+                </td>
+            </tr>
+
+        }
+
+    </table>
+
+    <p>
+        @Html.ActionLink("Volver", "InicioAprendiz", "Aprendizs")
+    </p>
+</body>
+</html>

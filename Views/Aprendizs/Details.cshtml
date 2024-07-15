@@ -1,0 +1,51 @@
+﻿@model ProyectoGimnasio.Aprendiz
+
+@{
+    ViewBag.Title = "Detalles Aprendiz";
+}
+<head>
+    <link rel="shortcut icon" href="~/Content/Imágenes/favicon.png" />
+</head>
+<h2>Detalles de aprendiz</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre de aprendiz
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreAprendiz)
+        </dd>
+
+        <dt>
+            Correo de aprendiz
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correoAprendiz)
+        </dd>
+
+        <dt>
+            Clave de aprendiz
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.claveAprendiz)
+        </dd>
+
+        <dt>
+            Número de ficha
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fichaAprendiz)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idAprendiz }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

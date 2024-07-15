@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GimnasioBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administrador">
+    <Key>
+      <PropertyRef Name="idAdministrador" />
+    </Key>
+    <Property Name="idAdministrador" Type="Int32" Nullable="false" />
+    <Property Name="nombreAdministrador" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="claveAdministrador" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Maquina" Relationship="Self.FK__Maquina__idAdmin__412EB0B6" FromRole="Administrador" ToRole="Maquina" />
+    <NavigationProperty Name="Reporte" Relationship="Self.FK__Reporte__idAdmin__3F466844" FromRole="Administrador" ToRole="Reporte" />
+  </EntityType>
+  <EntityType Name="Aprendiz">
+    <Key>
+      <PropertyRef Name="idAprendiz" />
+    </Key>
+    <Property Name="idAprendiz" Type="Int32" Nullable="false" />
+    <Property Name="nombreAprendiz" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correoAprendiz" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="claveAprendiz" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fichaAprendiz" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ingreso" Relationship="Self.FK__Ingreso__idApren__4D94879B" FromRole="Aprendiz" ToRole="Ingreso" />
+    <NavigationProperty Name="Rutina" Relationship="Self.FK__Rutina__idAprend__52593CB8" FromRole="Aprendiz" ToRole="Rutina" />
+  </EntityType>
+  <EntityType Name="DetallesRutina">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idEjercicio" Type="Int32" Nullable="false" />
+    <Property Name="numRepeticiones" Type="Int32" Nullable="false" />
+    <Property Name="numSeries" Type="Int32" Nullable="false" />
+    <Property Name="idRutina" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ejercicios" Relationship="Self.FK__DetallesR__idEje__5535A963" FromRole="DetallesRutina" ToRole="Ejercicios" />
+    <NavigationProperty Name="Rutina" Relationship="Self.FK__DetallesR__idRut__5629CD9C" FromRole="DetallesRutina" ToRole="Rutina" />
+  </EntityType>
+  <EntityType Name="Ejercicios">
+    <Key>
+      <PropertyRef Name="idEjercicio" />
+    </Key>
+    <Property Name="idEjercicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEjercicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombreGrupoMuscular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idMaquina" Type="Int32" />
+    <NavigationProperty Name="DetallesRutina" Relationship="Self.FK__DetallesR__idEje__5535A963" FromRole="Ejercicios" ToRole="DetallesRutina" />
+    <NavigationProperty Name="Maquina" Relationship="Self.FK__Ejercicio__idMaq__2C3393D0" FromRole="Ejercicios" ToRole="Maquina" />
+    <NavigationProperty Name="GrupoMuscular" Relationship="Self.FK__Ejercicio__nombr__2D27B809" FromRole="Ejercicios" ToRole="GrupoMuscular" />
+  </EntityType>
+  <EntityType Name="GrupoMuscular">
+    <Key>
+      <PropertyRef Name="nombreGrupoMuscular" />
+    </Key>
+    <Property Name="nombreGrupoMuscular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ejercicios" Relationship="Self.FK__Ejercicio__nombr__2D27B809" FromRole="GrupoMuscular" ToRole="Ejercicios" />
+  </EntityType>
+  <EntityType Name="Ingreso">
+    <Key>
+      <PropertyRef Name="idIngreso" />
+    </Key>
+    <Property Name="idIngreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idAprendiz" Type="Int32" Nullable="false" />
+    <Property Name="horaIngreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="horaSalida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Aprendiz" Relationship="Self.FK__Ingreso__idApren__4D94879B" FromRole="Ingreso" ToRole="Aprendiz" />
+  </EntityType>
+  <EntityType Name="Maquina">
+    <Key>
+      <PropertyRef Name="idMaquina" />
+    </Key>
+    <Property Name="idMaquina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreMaquina" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estadoMaquina" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idAdministrador" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Administrador" Relationship="Self.FK__Maquina__idAdmin__412EB0B6" FromRole="Maquina" ToRole="Administrador" />
+    <NavigationProperty Name="Ejercicios" Relationship="Self.FK__Ejercicio__idMaq__2C3393D0" FromRole="Maquina" ToRole="Ejercicios" />
+  </EntityType>
+  <EntityType Name="Reporte">
+    <Key>
+      <PropertyRef Name="idReporte" />
+    </Key>
+    <Property Name="idReporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoReporte" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="numMaDisponible" Type="Int32" />
+    <Property Name="numMaNoDisponible" Type="Int32" />
+    <Property Name="fechaReporte" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="noIngresos" Type="Int32" />
+    <Property Name="noAprendices" Type="Int32" />
+    <Property Name="idAdministrador" Type="Int32" />
+    <NavigationProperty Name="Administrador" Relationship="Self.FK__Reporte__idAdmin__3F466844" FromRole="Reporte" ToRole="Administrador" />
+  </EntityType>
+  <EntityType Name="Rutina">
+    <Key>
+      <PropertyRef Name="idRutina" />
+    </Key>
+    <Property Name="idRutina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreRutina" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="idAprendiz" Type="Int32" />
+    <NavigationProperty Name="Aprendiz" Relationship="Self.FK__Rutina__idAprend__52593CB8" FromRole="Rutina" ToRole="Aprendiz" />
+    <NavigationProperty Name="DetallesRutina" Relationship="Self.FK__DetallesR__idRut__5629CD9C" FromRole="Rutina" ToRole="DetallesRutina" />
+  </EntityType>
+  <Association Name="FK__Maquina__idAdmin__412EB0B6">
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="1" />
+    <End Role="Maquina" Type="Self.Maquina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrador">
+        <PropertyRef Name="idAdministrador" />
+      </Principal>
+      <Dependent Role="Maquina">
+        <PropertyRef Name="idAdministrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reporte__idAdmin__3F466844">
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+    <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrador">
+        <PropertyRef Name="idAdministrador" />
+      </Principal>
+      <Dependent Role="Reporte">
+        <PropertyRef Name="idAdministrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingreso__idApren__4D94879B">
+    <End Role="Aprendiz" Type="Self.Aprendiz" Multiplicity="1" />
+    <End Role="Ingreso" Type="Self.Ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aprendiz">
+        <PropertyRef Name="idAprendiz" />
+      </Principal>
+      <Dependent Role="Ingreso">
+        <PropertyRef Name="idAprendiz" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rutina__idAprend__52593CB8">
+    <End Role="Aprendiz" Type="Self.Aprendiz" Multiplicity="0..1" />
+    <End Role="Rutina" Type="Self.Rutina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aprendiz">
+        <PropertyRef Name="idAprendiz" />
+      </Principal>
+      <Dependent Role="Rutina">
+        <PropertyRef Name="idAprendiz" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetallesR__idEje__5535A963">
+    <End Role="Ejercicios" Type="Self.Ejercicios" Multiplicity="1" />
+    <End Role="DetallesRutina" Type="Self.DetallesRutina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ejercicios">
+        <PropertyRef Name="idEjercicio" />
+      </Principal>
+      <Dependent Role="DetallesRutina">
+        <PropertyRef Name="idEjercicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetallesR__idRut__5629CD9C">
+    <End Role="Rutina" Type="Self.Rutina" Multiplicity="1" />
+    <End Role="DetallesRutina" Type="Self.DetallesRutina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rutina">
+        <PropertyRef Name="idRutina" />
+      </Principal>
+      <Dependent Role="DetallesRutina">
+        <PropertyRef Name="idRutina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ejercicio__idMaq__2C3393D0">
+    <End Role="Maquina" Type="Self.Maquina" Multiplicity="0..1" />
+    <End Role="Ejercicios" Type="Self.Ejercicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maquina">
+        <PropertyRef Name="idMaquina" />
+      </Principal>
+      <Dependent Role="Ejercicios">
+        <PropertyRef Name="idMaquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ejercicio__nombr__2D27B809">
+    <End Role="GrupoMuscular" Type="Self.GrupoMuscular" Multiplicity="1" />
+    <End Role="Ejercicios" Type="Self.Ejercicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GrupoMuscular">
+        <PropertyRef Name="nombreGrupoMuscular" />
+      </Principal>
+      <Dependent Role="Ejercicios">
+        <PropertyRef Name="nombreGrupoMuscular" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GimnasioBDEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+    <EntitySet Name="Aprendiz" EntityType="Self.Aprendiz" />
+    <EntitySet Name="DetallesRutina" EntityType="Self.DetallesRutina" />
+    <EntitySet Name="Ejercicios" EntityType="Self.Ejercicios" />
+    <EntitySet Name="GrupoMuscular" EntityType="Self.GrupoMuscular" />
+    <EntitySet Name="Ingreso" EntityType="Self.Ingreso" />
+    <EntitySet Name="Maquina" EntityType="Self.Maquina" />
+    <EntitySet Name="Reporte" EntityType="Self.Reporte" />
+    <EntitySet Name="Rutina" EntityType="Self.Rutina" />
+    <AssociationSet Name="FK__Maquina__idAdmin__412EB0B6" Association="Self.FK__Maquina__idAdmin__412EB0B6">
+      <End Role="Administrador" EntitySet="Administrador" />
+      <End Role="Maquina" EntitySet="Maquina" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reporte__idAdmin__3F466844" Association="Self.FK__Reporte__idAdmin__3F466844">
+      <End Role="Administrador" EntitySet="Administrador" />
+      <End Role="Reporte" EntitySet="Reporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingreso__idApren__4D94879B" Association="Self.FK__Ingreso__idApren__4D94879B">
+      <End Role="Aprendiz" EntitySet="Aprendiz" />
+      <End Role="Ingreso" EntitySet="Ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rutina__idAprend__52593CB8" Association="Self.FK__Rutina__idAprend__52593CB8">
+      <End Role="Aprendiz" EntitySet="Aprendiz" />
+      <End Role="Rutina" EntitySet="Rutina" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetallesR__idEje__5535A963" Association="Self.FK__DetallesR__idEje__5535A963">
+      <End Role="Ejercicios" EntitySet="Ejercicios" />
+      <End Role="DetallesRutina" EntitySet="DetallesRutina" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetallesR__idRut__5629CD9C" Association="Self.FK__DetallesR__idRut__5629CD9C">
+      <End Role="Rutina" EntitySet="Rutina" />
+      <End Role="DetallesRutina" EntitySet="DetallesRutina" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ejercicio__idMaq__2C3393D0" Association="Self.FK__Ejercicio__idMaq__2C3393D0">
+      <End Role="Maquina" EntitySet="Maquina" />
+      <End Role="Ejercicios" EntitySet="Ejercicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ejercicio__nombr__2D27B809" Association="Self.FK__Ejercicio__nombr__2D27B809">
+      <End Role="GrupoMuscular" EntitySet="GrupoMuscular" />
+      <End Role="Ejercicios" EntitySet="Ejercicios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GimnasioBDModelStoreContainer" CdmEntityContainer="GimnasioBDEntities1">
+    <EntitySetMapping Name="Administrador">
+      <EntityTypeMapping TypeName="GimnasioBDModel.Administrador">
+        <MappingFragment StoreEntitySet="Administrador">
+          <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+          <ScalarProperty Name="nombreAdministrador" ColumnName="nombreAdministrador" />
+          <ScalarProperty Name="claveAdministrador" ColumnName="claveAdministrador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aprendiz">
+      <EntityTypeMapping TypeName="GimnasioBDModel.Aprendiz">
+        <MappingFragment StoreEntitySet="Aprendiz">
+          <ScalarProperty Name="idAprendiz" ColumnName="idAprendiz" />
+          <ScalarProperty Name="nombreAprendiz" ColumnName="nombreAprendiz" />
+          <ScalarProperty Name="correoAprendiz" ColumnName="correoAprendiz" />
+          <ScalarProperty Name="claveAprendiz" ColumnName="claveAprendiz" />
+          <ScalarProperty Name="fichaAprendiz" ColumnName="fichaAprendiz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallesRutina">
+      <EntityTypeMapping TypeName="GimnasioBDModel.DetallesRutina">
+        <MappingFragment StoreEntitySet="DetallesRutina">
+          <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+          <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+          <ScalarProperty Name="numRepeticiones" ColumnName="numRepeticiones" />
+          <ScalarProperty Name="numSeries" ColumnName="numSeries" />
+          <ScalarProperty Name="idRutina" ColumnName="idRutina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ejercicios">
+      <EntityTypeMapping TypeName="GimnasioBDModel.Ejercicios">
+        <MappingFragment StoreEntitySet="Ejercicios">
+          <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+          <ScalarProperty Name="nombreEjercicio" ColumnName="nombreEjercicio" />
+          <ScalarProperty Name="nombreGrupoMuscular" ColumnName="nombreGrupoMuscular" />
+          <ScalarProperty Name="idMaquina" ColumnName="idMaquina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GrupoMuscular">
+      <EntityTypeMapping TypeName="GimnasioBDModel.GrupoMuscular">
+        <MappingFragment StoreEntitySet="GrupoMuscular">
+          <ScalarProperty Name="nombreGrupoMuscular" ColumnName="nombreGrupoMuscular" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingreso">
+      <EntityTypeMapping TypeName="GimnasioBDModel.Ingreso">
+        <MappingFragment StoreEntitySet="Ingreso">
+          <ScalarProperty Name="idIngreso" ColumnName="idIngreso" />
+          <ScalarProperty Name="idAprendiz" ColumnName="idAprendiz" />
+          <ScalarProperty Name="horaIngreso" ColumnName="horaIngreso" />
+          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maquina">
+      <EntityTypeMapping TypeName="GimnasioBDModel.Maquina">
+        <MappingFragment StoreEntitySet="Maquina">
+          <ScalarProperty Name="idMaquina" ColumnName="idMaquina" />
+          <ScalarProperty Name="nombreMaquina" ColumnName="nombreMaquina" />
+          <ScalarProperty Name="estadoMaquina" ColumnName="estadoMaquina" />
+          <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reporte">
+      <EntityTypeMapping TypeName="GimnasioBDModel.Reporte">
+        <MappingFragment StoreEntitySet="Reporte">
+          <ScalarProperty Name="idReporte" ColumnName="idReporte" />
+          <ScalarProperty Name="tipoReporte" ColumnName="tipoReporte" />
+          <ScalarProperty Name="numMaDisponible" ColumnName="numMaDisponible" />
+          <ScalarProperty Name="numMaNoDisponible" ColumnName="numMaNoDisponible" />
+          <ScalarProperty Name="fechaReporte" ColumnName="fechaReporte" />
+          <ScalarProperty Name="noIngresos" ColumnName="noIngresos" />
+          <ScalarProperty Name="noAprendices" ColumnName="noAprendices" />
+          <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rutina">
+      <EntityTypeMapping TypeName="GimnasioBDModel.Rutina">
+        <MappingFragment StoreEntitySet="Rutina">
+          <ScalarProperty Name="idRutina" ColumnName="idRutina" />
+          <ScalarProperty Name="nombreRutina" ColumnName="nombreRutina" />
+          <ScalarProperty Name="idAprendiz" ColumnName="idAprendiz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

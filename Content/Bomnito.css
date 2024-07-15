@@ -1,0 +1,91 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* Background color of the body */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: #ff6a00; /* Color of the header */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .table th,
+    .table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        border-color: #ff6a00; /* Border color of the table cells */
+    }
+
+    .table th {
+        background-color: #ff6a00; /* Background color of the table header cells */
+        color: white; /* Text color of the table header cells */
+    }
+
+    .table td {
+        background-color: #fff; /* Background color of the table data cells */
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f2f2f2; /* Background color for even rows */
+    }
+
+    .table tr:hover {
+        background-color: #e1e1e1; /* Background color on row hover */
+    }
+
+.action-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+    .action-links a.edit {
+        background-color: #8B6143;
+    }
+
+    .action-links a.details {
+        background-color: #8B6143;
+    }
+
+    .action-links a.delete {
+        background-color: #8B6143;
+    }
+
+    .action-links a:hover {
+        opacity: 0.8;
+    }
+
+.create-new {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #ff6a00; /* Background color of the create new button */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+    .create-new:hover {
+        background-color: #e26b23; /* Background color of the create new button on hover */
+    }
+
+a {
+    color: #ff6a00; /* Color of the links */
+}
+
+    a:hover {
+        color: #ff8f42; /* Color of the links on hover */
+    }

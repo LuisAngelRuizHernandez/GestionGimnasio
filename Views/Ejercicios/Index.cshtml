@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProyectoGimnasio.Ejercicios>
+
+@{
+    ViewBag.Title = "Ejercicios";
+}
+
+<h2>Ejercicios</h2>
+<link href="~/Content/css/Login.css" rel="stylesheet" />
+<link href="~/Content/Bomnito.css" rel="stylesheet" type="text/css" />
+<p>
+    <a class="create-new" href="@Url.Action("Create")">Crear nuevo ejercicio</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre de ejercicio
+        </th>
+        <th>
+            Nombre de máquina
+        </th>
+        <th>
+            Grupo muscular
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreEjercicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maquina.nombreMaquina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrupoMuscular.nombreGrupoMuscular)
+            </td>
+            <td class="action-links">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idEjercicio }, new { @class = "edit" })|
+                @Html.ActionLink("Detalles", "Details", new { id = item.idEjercicio }, new { @class = "details" })|
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idEjercicio }, new { @class = "delete" })
+            </td>
+        </tr>
+     }
+</table>

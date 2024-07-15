@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProyectoGimnasio.Aprendiz>
+
+@{
+    ViewBag.Title = "Aprendiz";
+}
+
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+    <link href="~/Content/Bomnito.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/Content/Imágenes/favicon.png" />
+</head>
+
+<h2>Aprendices</h2>
+
+<p>
+    <a class="create-new" href="@Url.Action("Create")">Crear nuevo aprendiz</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>
+            Clave
+        </th>
+        <th>
+            Número de ficha
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreAprendiz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoAprendiz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.claveAprendiz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fichaAprendiz)
+        </td>
+        <td class="action-links">
+            @Html.ActionLink("Editar", "Edit", new { id = item.idAprendiz }, new { @class = "edit" })|
+            @Html.ActionLink("Detalles", "Details", new { id = item.idAprendiz }, new { @class = "details" })
+        </td>
+    </tr>
+}
+
+</table>

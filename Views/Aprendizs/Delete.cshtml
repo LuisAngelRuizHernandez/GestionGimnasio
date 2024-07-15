@@ -1,0 +1,58 @@
+﻿@model ProyectoGimnasio.Aprendiz
+
+@{
+    ViewBag.Title = "Borrar aprendiz";
+}
+<head>
+    <link rel="shortcut icon" href="~/Content/Imágenes/favicon.png" />
+</head>
+<h2>Borrar</h2>
+
+<h3>¿Seguro de borrar al aprendiz?</h3>
+<div>
+    <h4>Aprendiz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreAprendiz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreAprendiz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correoAprendiz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correoAprendiz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.claveAprendiz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.claveAprendiz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fichaAprendiz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fichaAprendiz)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

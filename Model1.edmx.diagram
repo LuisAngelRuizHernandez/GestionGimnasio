@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b179e93a6f3f4cfd84c95e0c121ec1c7" Name="Diagram1">
+        <EntityTypeShape EntityType="GimnasioBDModel.Administrador" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.Aprendiz" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.DetallesRutina" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.Ejercicios" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.GrupoMuscular" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.Ingreso" Width="1.5" PointX="11.625" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.Maquina" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.Reporte" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GimnasioBDModel.Rutina" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="GimnasioBDModel.FK__Maquina__idAdmin__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="GimnasioBDModel.FK__Reporte__idAdmin__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="GimnasioBDModel.FK__Ingreso__idApren__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="GimnasioBDModel.FK__Rutina__idAprend__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="GimnasioBDModel.FK__DetallesR__idEje__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="GimnasioBDModel.FK__DetallesR__idRut__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="GimnasioBDModel.FK__Ejercicio__idMaq__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="GimnasioBDModel.FK__Ejercicio__nombr__2D27B809" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

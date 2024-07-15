@@ -1,0 +1,48 @@
+﻿@model ProyectoGimnasio.Ejercicios
+
+@{
+    ViewBag.Title = "Borrar ejercicio";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Seguro de borrar este ejercicio?</h3>
+<div>
+    <h4>Ejercicios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre de ejercicio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreEjercicio)
+        </dd>
+
+        <dt>
+            Nombre de máquina
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maquina.nombreMaquina)
+        </dd>
+
+        <dt>
+            Grupo muscular
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrupoMuscular.nombreGrupoMuscular)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,65 @@
+﻿@model ProyectoGimnasio.DetallesRutina
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <link rel="shortcut icon" href="~/Content/Imágenes/favicon.png" />
+</head>
+<body>
+    <h3>¿Seguro de querer borrar esto?</h3>
+    <div>
+        <h4>Ejercicios de la rutina</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.numRepeticiones)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.numRepeticiones)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.numSeries)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.numSeries)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Ejercicios.nombreEjercicio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ejercicios.nombreEjercicio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Rutina.nombreRutina)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Rutina.nombreRutina)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Borrar" class="btn btn-default" /> |
+                @Html.ActionLink("Volver", "Index", new { id = ViewBag.idRutina })
+            </div>
+        }
+    </div>
+</body>
+</html>

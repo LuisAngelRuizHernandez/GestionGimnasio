@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GimnasioBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrador">
+    <Key>
+      <PropertyRef Name="idAdministrador" />
+    </Key>
+    <Property Name="idAdministrador" Type="int" Nullable="false" />
+    <Property Name="nombreAdministrador" Type="varchar" MaxLength="30" />
+    <Property Name="claveAdministrador" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Aprendiz">
+    <Key>
+      <PropertyRef Name="idAprendiz" />
+    </Key>
+    <Property Name="idAprendiz" Type="int" Nullable="false" />
+    <Property Name="nombreAprendiz" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="correoAprendiz" Type="varchar" MaxLength="30" />
+    <Property Name="claveAprendiz" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fichaAprendiz" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetallesRutina">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idEjercicio" Type="int" Nullable="false" />
+    <Property Name="numRepeticiones" Type="int" Nullable="false" />
+    <Property Name="numSeries" Type="int" Nullable="false" />
+    <Property Name="idRutina" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ejercicios">
+    <Key>
+      <PropertyRef Name="idEjercicio" />
+    </Key>
+    <Property Name="idEjercicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreEjercicio" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="nombreGrupoMuscular" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="idMaquina" Type="int" />
+  </EntityType>
+  <EntityType Name="GrupoMuscular">
+    <Key>
+      <PropertyRef Name="nombreGrupoMuscular" />
+    </Key>
+    <Property Name="nombreGrupoMuscular" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingreso">
+    <Key>
+      <PropertyRef Name="idIngreso" />
+    </Key>
+    <Property Name="idIngreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idAprendiz" Type="int" Nullable="false" />
+    <Property Name="horaIngreso" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="horaSalida" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Maquina">
+    <Key>
+      <PropertyRef Name="idMaquina" />
+    </Key>
+    <Property Name="idMaquina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreMaquina" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="estadoMaquina" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="idAdministrador" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reporte">
+    <Key>
+      <PropertyRef Name="idReporte" />
+    </Key>
+    <Property Name="idReporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipoReporte" Type="varchar" MaxLength="15" />
+    <Property Name="numMaDisponible" Type="int" />
+    <Property Name="numMaNoDisponible" Type="int" />
+    <Property Name="fechaReporte" Type="varchar" MaxLength="20" />
+    <Property Name="noIngresos" Type="int" />
+    <Property Name="noAprendices" Type="int" />
+    <Property Name="idAdministrador" Type="int" />
+  </EntityType>
+  <EntityType Name="Rutina">
+    <Key>
+      <PropertyRef Name="idRutina" />
+    </Key>
+    <Property Name="idRutina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreRutina" Type="varchar" MaxLength="30" />
+    <Property Name="idAprendiz" Type="int" />
+  </EntityType>
+  <Association Name="FK__DetallesR__idEje__5535A963">
+    <End Role="Ejercicios" Type="Self.Ejercicios" Multiplicity="1" />
+    <End Role="DetallesRutina" Type="Self.DetallesRutina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ejercicios">
+        <PropertyRef Name="idEjercicio" />
+      </Principal>
+      <Dependent Role="DetallesRutina">
+        <PropertyRef Name="idEjercicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetallesR__idRut__5629CD9C">
+    <End Role="Rutina" Type="Self.Rutina" Multiplicity="1" />
+    <End Role="DetallesRutina" Type="Self.DetallesRutina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rutina">
+        <PropertyRef Name="idRutina" />
+      </Principal>
+      <Dependent Role="DetallesRutina">
+        <PropertyRef Name="idRutina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ejercicio__idMaq__2C3393D0">
+    <End Role="Maquina" Type="Self.Maquina" Multiplicity="0..1" />
+    <End Role="Ejercicios" Type="Self.Ejercicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maquina">
+        <PropertyRef Name="idMaquina" />
+      </Principal>
+      <Dependent Role="Ejercicios">
+        <PropertyRef Name="idMaquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ejercicio__nombr__2D27B809">
+    <End Role="GrupoMuscular" Type="Self.GrupoMuscular" Multiplicity="1" />
+    <End Role="Ejercicios" Type="Self.Ejercicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GrupoMuscular">
+        <PropertyRef Name="nombreGrupoMuscular" />
+      </Principal>
+      <Dependent Role="Ejercicios">
+        <PropertyRef Name="nombreGrupoMuscular" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingreso__idApren__4D94879B">
+    <End Role="Aprendiz" Type="Self.Aprendiz" Multiplicity="1" />
+    <End Role="Ingreso" Type="Self.Ingreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aprendiz">
+        <PropertyRef Name="idAprendiz" />
+      </Principal>
+      <Dependent Role="Ingreso">
+        <PropertyRef Name="idAprendiz" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Maquina__idAdmin__412EB0B6">
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="1" />
+    <End Role="Maquina" Type="Self.Maquina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrador">
+        <PropertyRef Name="idAdministrador" />
+      </Principal>
+      <Dependent Role="Maquina">
+        <PropertyRef Name="idAdministrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reporte__idAdmin__3F466844">
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+    <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrador">
+        <PropertyRef Name="idAdministrador" />
+      </Principal>
+      <Dependent Role="Reporte">
+        <PropertyRef Name="idAdministrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rutina__idAprend__52593CB8">
+    <End Role="Aprendiz" Type="Self.Aprendiz" Multiplicity="0..1" />
+    <End Role="Rutina" Type="Self.Rutina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aprendiz">
+        <PropertyRef Name="idAprendiz" />
+      </Principal>
+      <Dependent Role="Rutina">
+        <PropertyRef Name="idAprendiz" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GimnasioBDModelStoreContainer">
+    <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Aprendiz" EntityType="Self.Aprendiz" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetallesRutina" EntityType="Self.DetallesRutina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ejercicios" EntityType="Self.Ejercicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GrupoMuscular" EntityType="Self.GrupoMuscular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingreso" EntityType="Self.Ingreso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maquina" EntityType="Self.Maquina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reporte" EntityType="Self.Reporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rutina" EntityType="Self.Rutina" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DetallesR__idEje__5535A963" Association="Self.FK__DetallesR__idEje__5535A963">
+      <End Role="Ejercicios" EntitySet="Ejercicios" />
+      <End Role="DetallesRutina" EntitySet="DetallesRutina" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetallesR__idRut__5629CD9C" Association="Self.FK__DetallesR__idRut__5629CD9C">
+      <End Role="Rutina" EntitySet="Rutina" />
+      <End Role="DetallesRutina" EntitySet="DetallesRutina" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ejercicio__idMaq__2C3393D0" Association="Self.FK__Ejercicio__idMaq__2C3393D0">
+      <End Role="Maquina" EntitySet="Maquina" />
+      <End Role="Ejercicios" EntitySet="Ejercicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ejercicio__nombr__2D27B809" Association="Self.FK__Ejercicio__nombr__2D27B809">
+      <End Role="GrupoMuscular" EntitySet="GrupoMuscular" />
+      <End Role="Ejercicios" EntitySet="Ejercicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingreso__idApren__4D94879B" Association="Self.FK__Ingreso__idApren__4D94879B">
+      <End Role="Aprendiz" EntitySet="Aprendiz" />
+      <End Role="Ingreso" EntitySet="Ingreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Maquina__idAdmin__412EB0B6" Association="Self.FK__Maquina__idAdmin__412EB0B6">
+      <End Role="Administrador" EntitySet="Administrador" />
+      <End Role="Maquina" EntitySet="Maquina" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reporte__idAdmin__3F466844" Association="Self.FK__Reporte__idAdmin__3F466844">
+      <End Role="Administrador" EntitySet="Administrador" />
+      <End Role="Reporte" EntitySet="Reporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rutina__idAprend__52593CB8" Association="Self.FK__Rutina__idAprend__52593CB8">
+      <End Role="Aprendiz" EntitySet="Aprendiz" />
+      <End Role="Rutina" EntitySet="Rutina" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

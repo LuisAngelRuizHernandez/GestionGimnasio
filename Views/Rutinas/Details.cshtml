@@ -1,0 +1,44 @@
+﻿@model ProyectoGimnasio.Rutina
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link rel="shortcut icon" href="~/Content/Imágenes/favicon.png" />
+
+</head>
+<body>
+    <div>
+        <h4>Rutina</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Nombre de rutina
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombreRutina)
+            </dd>
+
+            <dt>
+                Aprendiz vinculado
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Aprendiz.nombreAprendiz)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idRutina }) |
+        @Html.ActionLink("Volver", "Index")
+    </p>
+</body>
+</html>
